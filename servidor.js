@@ -27,4 +27,4 @@ function broadcastMessage(message, sender) {
     });
 }
 
-console.log('Servidor WebSocket iniciado en ws://localhost:8080');
+console.log('Servidor WebSocket iniciado en ws://13.58.36.34:8080');
