@@ -1,6 +1,14 @@
 const WebSocket = require('ws');
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const app = express();
+app.use(cors())
+
+const server = http.createServer(app);
+
+const wss = new WebSocket.Server({ server });
 const clients = new Set();
 
 wss.on('connection', (ws) => {
@@ -27,4 +35,6 @@ function broadcastMessage(message, sender) {
     });
 }
 
-console.log('Servidor WebSocket iniciado en ws://13.58.36.34:8080');
+server.listen(8080, () => {
+    console.log('Servidor WebSocket iniciado en ws://13.58.36.34:8080');
+});
